@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Governor Gear Calculator — KingshotPro</title>
+  <meta name="description" content="Calculate governor gear upgrade material costs for Kingshot.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-brand" href="../index.html">KingshotPro</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="building.html" class="active">Calculators</a></li>
+    <li><a href="../codes.html">Gift Codes</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+  <div class="container">
+
+    <div class="page-header">
+      <a class="back-link" href="../index.html">← Home</a>
+      <h1>🛡️ Governor Gear Calculator</h1>
+      <p>Material costs to upgrade any gear piece from current to target level.</p>
+    </div>
+
+    <!-- Gear set tabs -->
+    <div class="tab-row">
+      <div class="tab active" onclick="switchSet(this,'combat')">Combat Set</div>
+      <div class="tab" onclick="switchSet(this,'gathering')">Gathering Set</div>
+      <div class="tab" onclick="switchSet(this,'construction')">Construction Set</div>
+    </div>
+
+    <div class="calc-layout">
+
+      <!-- INPUTS -->
+      <div class="calc-inputs">
+        <h2>Gear Parameters</h2>
+
+        <div class="form-group">
+          <label for="gear-piece">Gear piece</label>
+          <select id="gear-piece" onchange="calculate()">
+            <option value="helmet">Helmet</option>
+            <option value="armor">Armor</option>
+            <option value="gloves">Gloves</option>
+            <option value="boots">Boots</option>
+            <option value="weapon">Weapon</option>
+            <option value="accessory">Accessory</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="gear-from">Current level</label>
+          <select id="gear-from" onchange="calculate()"></select>
+        </div>
+
+        <div class="form-group">
+          <label for="gear-to">Target level</label>
+          <select id="gear-to" onchange="calculate()"></select>
+        </div>
+
+        <button class="btn btn-primary btn-full" onclick="calculate()">Calculate</button>
+      </div>
+
+      <!-- RESULTS -->
+      <div class="calc-results">
+        <h2>Materials Required</h2>
+
+        <div id="result-area">
+          <p class="result-placeholder">Select gear and levels to calculate.</p>
+        </div>
+
+        <div class="alert alert-warn mt-16" style="font-size:12px;">
+          Material costs are community-estimated. Verify at
+          <a href="https://kingshotdata.com" target="_blank" rel="noopener">kingshotdata.com</a>.
+          <a href="https://github.com/growaleaf/kingshot-pro/issues" target="_blank" rel="noopener">Report inaccuracy →</a>
+        </div>
+      </div>
+
+    </div><!-- /calc-layout -->
+
+    <!-- Gear bonus reference -->
+    <div class="card mt-24">
+      <div class="card-title">Gear priority guide</div>
+      <div class="alert alert-info" style="font-size:13px;">
+        General priority order for combat gear: Weapon → Helmet → Armor → Gloves → Boots → Accessory.
+        Gathering gear priority depends on your most-needed resource. This is community guidance — verify with your alliance's experience.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">KingshotPro</div>
+      <p class="footer-note">Unofficial. Not affiliated with Century Games.</p>
+    </div>
+    <div class="footer-links">
+      <a href="building.html">Building</a>
+      <a href="troops.html">Troops</a>
+      <a href="shards.html">Hero Shards</a>
+      <a href="pets.html">Pets</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/fid.js"></script>
+<script src="../js/calc-gear.js"></script>
+</body>
+</html>

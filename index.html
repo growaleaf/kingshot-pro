@@ -1,1 +1,228 @@
-<!DOCTYPE html><html><head><title>KingshotPro</title></head><body></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KingshotPro — Personalized Kingshot Tools & Advisory</title>
+  <meta name="description" content="Enter your FID for instant personalized advice, calculators, and alliance intelligence. The only Kingshot tool that knows your account.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ─── NAVIGATION ──────────────────────── -->
+<nav class="nav">
+  <span class="nav-brand">KingshotPro</span>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="calculators/building.html">Calculators</a></li>
+    <li><a href="codes.html">Gift Codes</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ────────────────────────────── -->
+<div class="page">
+  <div class="container">
+
+    <section class="hero">
+      <div class="hero-eyebrow">Free · No login required</div>
+      <h1>The tool that knows<br><span>your Kingshot account</span></h1>
+      <p class="hero-sub">
+        Enter your FID and get instant personalized advice, resource calculators,
+        and server intelligence — built around you, not generic guides.
+      </p>
+
+      <!-- FID FORM -->
+      <form class="fid-form" id="fid-form" autocomplete="off">
+        <div class="fid-input-row">
+          <input
+            type="text"
+            id="fid-input"
+            inputmode="numeric"
+            placeholder="Enter your FID (e.g. 7291048)"
+            maxlength="12"
+            pattern="\d{5,12}"
+            aria-label="Player FID"
+            required
+          >
+          <button type="submit" class="btn btn-primary" id="fid-btn">Look up</button>
+        </div>
+        <p class="fid-note">
+          Find your FID in-game: tap your avatar → Settings → Player Info.
+        </p>
+        <div class="alert alert-error hidden mt-8" id="fid-error" role="alert"></div>
+      </form>
+
+      <!-- MANUAL FALLBACK (hidden unless CORS fails) -->
+      <div id="manual-entry" class="hidden" style="max-width:480px;margin:24px auto 0;">
+        <div class="alert alert-info" style="margin-bottom:16px;">
+          Automatic lookup is unavailable from this browser. Enter your stats manually:
+        </div>
+        <form id="manual-form">
+          <div class="form-group">
+            <label for="manual-name">Your in-game name (optional)</label>
+            <input type="text" id="manual-name" placeholder="e.g. DragonSlayer" maxlength="32">
+          </div>
+          <div class="form-group">
+            <label for="manual-furnace">Furnace / Castle level</label>
+            <input type="number" id="manual-furnace" placeholder="e.g. 18" min="1" max="35" required>
+          </div>
+          <div class="form-group">
+            <label for="manual-kid">Kingdom number (from kingdom name)</label>
+            <input type="number" id="manual-kid" placeholder="e.g. 734" min="1" max="9999">
+          </div>
+          <div class="form-group">
+            <label for="manual-spend">Spending level</label>
+            <select id="manual-spend">
+              <option value="f2p">Free-to-Play (never spent)</option>
+              <option value="low">Low Spender (&lt;$100 total)</option>
+              <option value="mid">Mid Spender ($100–$499 total)</option>
+              <option value="whale">Whale ($500+ total)</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Get my advice</button>
+        </form>
+      </div>
+
+      <!-- PROFILE CARD (shown after lookup) -->
+      <div class="profile-card" id="profile-card" aria-live="polite"></div>
+
+    </section><!-- /hero -->
+
+    <!-- ─── ADVISORY OUTPUT ─────────────── -->
+    <section class="advisory" id="advisory">
+      <div class="advisory-header" id="advisory-header"></div>
+      <div class="advice-grid" id="advice-grid"></div>
+
+      <div class="text-center mt-24">
+        <p class="text-muted" style="font-size:13px;margin-bottom:12px;">
+          These recommendations are based on general best practices.<br>
+          Advanced personalization (hero stats, gear, research tree) coming in Phase 2.
+        </p>
+        <a href="calculators/building.html" class="btn btn-outline btn-sm">Open Calculators</a>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ─── TOOLS GRID ──────────────────── -->
+    <section>
+      <h2 class="section-title">Tools & Calculators</h2>
+      <p class="section-sub">All calculators adapt to your profile when you enter your FID above.</p>
+
+      <div class="card-grid">
+
+        <a href="calculators/building.html" class="tool-card">
+          <div class="tool-icon">🏰</div>
+          <div class="tool-name">Building Calculator</div>
+          <div class="tool-desc">Resource costs and time for upgrading any building from current to target level, with construction buff.</div>
+          <div class="tool-link">Open →</div>
+        </a>
+
+        <a href="calculators/troops.html" class="tool-card">
+          <div class="tool-icon">⚔️</div>
+          <div class="tool-name">Troop Training Calculator</div>
+          <div class="tool-desc">Training costs, time, and — uniquely — HoG, KvK, and TSG event points per batch. Plan your training around events.</div>
+          <div class="tool-link">Open →</div>
+        </a>
+
+        <a href="calculators/gear.html" class="tool-card">
+          <div class="tool-icon">🛡️</div>
+          <div class="tool-name">Governor Gear Calculator</div>
+          <div class="tool-desc">Material costs for each gear piece level, across all gear sets. Know what to farm before upgrading.</div>
+          <div class="tool-link">Open →</div>
+        </a>
+
+        <a href="calculators/shards.html" class="tool-card">
+          <div class="tool-icon">✨</div>
+          <div class="tool-name">Hero Shard Calculator</div>
+          <div class="tool-desc">Shards needed to reach target star level for any hero. Includes gem equivalent cost.</div>
+          <div class="tool-link">Open →</div>
+        </a>
+
+        <a href="calculators/pets.html" class="tool-card">
+          <div class="tool-icon">🐉</div>
+          <div class="tool-name">Pet Upgrade Calculator</div>
+          <div class="tool-desc">Feed and material costs per pet level. Identify the cost vs. bonus sweet spots for your pets.</div>
+          <div class="tool-link">Open →</div>
+        </a>
+
+        <a href="codes.html" class="tool-card">
+          <div class="tool-icon">🎁</div>
+          <div class="tool-name">Gift Codes</div>
+          <div class="tool-desc">Active gift codes updated regularly. Redeem in-game for free speedups, gems, and resources.</div>
+          <div class="tool-link">View codes →</div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ─── HOW IT WORKS ────────────────── -->
+    <section>
+      <h2 class="section-title text-center">How it works</h2>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>Enter your FID</h3>
+          <p>Your player ID connects your account automatically — no username or password ever required.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>We read your profile</h3>
+          <p>Furnace level, server, and spending tier are detected instantly. Calculators pre-fill with your data.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>Get personalized advice</h3>
+          <p>Top 3 priorities for your exact situation — not generic guides, not one-size-fits-all tips.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── ECOSYSTEM LINKS ─────────────── -->
+    <section>
+      <h2 class="section-title">The Kingshot Ecosystem</h2>
+      <p class="section-sub">KingshotPro doesn't try to rebuild the wheel. We link the best resources:</p>
+
+      <div class="card-grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr));">
+        <div class="card">
+          <div class="card-title">Game Database</div>
+          <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px;">Complete building stats, pet data, research trees.</p>
+          <a href="https://kingshotdata.com" target="_blank" rel="noopener" class="btn btn-outline btn-sm">kingshotdata.com ↗</a>
+        </div>
+        <div class="card">
+          <div class="card-title">Strategy Guides</div>
+          <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px;">30+ in-depth guides updated weekly for all stages.</p>
+          <a href="https://kingshotguides.com" target="_blank" rel="noopener" class="btn btn-outline btn-sm">kingshotguides.com ↗</a>
+        </div>
+        <div class="card">
+          <div class="card-title">Alliance Intelligence</div>
+          <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px;">Server rankings, alliance power trends, kingdom data.</p>
+          <a href="https://kingwatch.thehivemakes.com" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Kingwatch ↗</a>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /container -->
+</div><!-- /page -->
+
+<!-- ─── FOOTER ────────────────────────── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">KingshotPro</div>
+      <p class="footer-note">Unofficial community tools for Kingshot players. Not affiliated with Century Games.</p>
+    </div>
+    <div class="footer-links">
+      <a href="calculators/building.html">Building Calculator</a>
+      <a href="calculators/troops.html">Troop Calculator</a>
+      <a href="codes.html">Gift Codes</a>
+      <a href="https://kingwatch.thehivemakes.com" target="_blank" rel="noopener">Kingwatch</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/fid.js"></script>
+<script src="js/advisory.js"></script>
+</body>
+</html>

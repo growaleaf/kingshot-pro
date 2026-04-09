@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building Calculator — KingshotPro</title>
+  <meta name="description" content="Calculate building upgrade resource costs and time for Kingshot.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-brand" href="../index.html">KingshotPro</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="building.html" class="active">Calculators</a></li>
+    <li><a href="../codes.html">Gift Codes</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+  <div class="container">
+
+    <div class="page-header">
+      <a class="back-link" href="../index.html">← Home</a>
+      <h1>🏰 Building Calculator</h1>
+      <p>Resource costs and upgrade time for any building level.</p>
+    </div>
+
+    <!-- Calculator tabs -->
+    <div class="tab-row">
+      <div class="tab active" onclick="switchTab(this,'castle')">Castle (Furnace)</div>
+      <div class="tab" onclick="switchTab(this,'academy')">War Academy</div>
+      <div class="tab" onclick="switchTab(this,'barracks')">Barracks</div>
+      <div class="tab" onclick="switchTab(this,'hospital')">Hospital</div>
+      <div class="tab" onclick="switchTab(this,'storehouse')">Storehouse</div>
+    </div>
+
+    <div class="calc-layout">
+
+      <!-- INPUTS -->
+      <div class="calc-inputs">
+        <h2>Parameters</h2>
+
+        <div class="form-group">
+          <label for="from-level">Current level</label>
+          <select id="from-level"></select>
+        </div>
+
+        <div class="form-group">
+          <label for="to-level">Target level</label>
+          <select id="to-level"></select>
+        </div>
+
+        <div class="form-group">
+          <label>Construction speed buff</label>
+          <div class="range-row">
+            <input type="range" id="buff-slider" min="0" max="300" step="5" value="0"
+              oninput="document.getElementById('buff-val').textContent=this.value+'%'; calculate()">
+            <span class="range-val" id="buff-val">0%</span>
+          </div>
+          <p style="font-size:12px;color:var(--text-dim);">Include buffs from research, heroes, VIP, and events.</p>
+        </div>
+
+        <button class="btn btn-primary btn-full" onclick="calculate()">Calculate</button>
+
+        <div id="profile-hint" class="alert alert-info mt-16 hidden" style="font-size:13px;">
+          Profile loaded — calculators will be enhanced with your data in a future update.
+        </div>
+      </div>
+
+      <!-- RESULTS -->
+      <div class="calc-results">
+        <h2>Required Resources</h2>
+
+        <div id="result-area">
+          <p class="result-placeholder">Select levels and click Calculate.</p>
+        </div>
+
+        <div id="data-notice" class="alert alert-warn mt-16 hidden" style="font-size:13px;">
+          ⚠️ Resource values are community-estimated. Verify exact amounts in-game or at
+          <a href="https://kingshotdata.com" target="_blank" rel="noopener">kingshotdata.com</a>.
+          <br><br>
+          <a href="https://github.com/growaleaf/kingshot-pro/issues" target="_blank" rel="noopener">Report inaccuracies →</a>
+        </div>
+      </div>
+
+    </div><!-- /calc-layout -->
+
+  </div><!-- /container -->
+</div><!-- /page -->
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">KingshotPro</div>
+      <p class="footer-note">Unofficial. Not affiliated with Century Games.</p>
+    </div>
+    <div class="footer-links">
+      <a href="troops.html">Troop Calculator</a>
+      <a href="gear.html">Gear Calculator</a>
+      <a href="shards.html">Hero Shards</a>
+      <a href="pets.html">Pets</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/fid.js"></script>
+<script src="../js/calc-building.js"></script>
+</body>
+</html>

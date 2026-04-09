@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Troop Training Calculator — KingshotPro</title>
+  <meta name="description" content="Calculate troop training costs, time, and event points (HoG, KvK, TSG) for Kingshot.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-brand" href="../index.html">KingshotPro</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="building.html" class="active">Calculators</a></li>
+    <li><a href="../codes.html">Gift Codes</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+  <div class="container">
+
+    <div class="page-header">
+      <a class="back-link" href="../index.html">← Home</a>
+      <h1>⚔️ Troop Training Calculator</h1>
+      <p>Resources, time, and event points for any training batch.</p>
+    </div>
+
+    <!-- Troop type tabs -->
+    <div class="tab-row">
+      <div class="tab active" onclick="switchType(this,'infantry')">Infantry</div>
+      <div class="tab" onclick="switchType(this,'lancer')">Lancer</div>
+      <div class="tab" onclick="switchType(this,'marksman')">Marksman</div>
+    </div>
+
+    <div class="calc-layout">
+
+      <!-- INPUTS -->
+      <div class="calc-inputs">
+        <h2>Training Setup</h2>
+
+        <div class="form-group">
+          <label for="troop-tier">Troop tier</label>
+          <select id="troop-tier" onchange="updateTierInfo()">
+            <option value="t1">Tier 1</option>
+            <option value="t2">Tier 2</option>
+            <option value="t3">Tier 3</option>
+            <option value="t4" selected>Tier 4</option>
+            <option value="t5">Tier 5</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="troop-qty">Quantity to train</label>
+          <input type="number" id="troop-qty" value="1000" min="1" max="999999" step="100"
+            oninput="calculate()">
+        </div>
+
+        <div class="form-group">
+          <label>Training speed buff</label>
+          <div class="range-row">
+            <input type="range" id="speed-buff" min="0" max="500" step="5" value="0"
+              oninput="document.getElementById('speed-val').textContent=this.value+'%'; calculate()">
+            <span class="range-val" id="speed-val">0%</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Training capacity buff (troop count/batch)</label>
+          <div class="range-row">
+            <input type="range" id="cap-buff" min="0" max="200" step="5" value="0"
+              oninput="document.getElementById('cap-val').textContent=this.value+'%'; calculate()">
+            <span class="range-val" id="cap-val">0%</span>
+          </div>
+        </div>
+
+        <div style="border-top:1px solid var(--border);margin:16px 0;padding-top:16px;">
+          <label style="margin-bottom:12px;font-size:14px;color:var(--text);">Event point rates
+            <span style="font-size:11px;color:var(--text-dim);font-weight:400;">(pts per troop)</span>
+          </label>
+          <p style="font-size:12px;color:var(--text-dim);margin-bottom:12px;">
+            These vary by event. Adjust if your current event has different rates.
+          </p>
+          <div class="form-group">
+            <label for="hog-rate">HoG points per troop (T4 default)</label>
+            <input type="number" id="hog-rate" value="10" min="0" step="1" oninput="calculate()">
+          </div>
+          <div class="form-group">
+            <label for="kvk-rate">KvK points per troop (T4 default)</label>
+            <input type="number" id="kvk-rate" value="10" min="0" step="1" oninput="calculate()">
+          </div>
+          <div class="form-group">
+            <label for="tsg-rate">TSG points per troop (T4 default)</label>
+            <input type="number" id="tsg-rate" value="4" min="0" step="1" oninput="calculate()">
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-full" onclick="calculate()">Calculate</button>
+
+        <div class="alert alert-warn mt-16" style="font-size:12px;">
+          Resource costs are community-estimated. Verify exact values in-game.
+          <a href="https://github.com/growaleaf/kingshot-pro/issues" target="_blank" rel="noopener">Report inaccuracy →</a>
+        </div>
+      </div>
+
+      <!-- RESULTS -->
+      <div class="calc-results">
+        <h2>Results</h2>
+
+        <!-- Tier info card -->
+        <div id="tier-info" class="card mb-16" style="background:var(--surface-2);border-color:var(--border);">
+          <p class="text-muted" style="font-size:13px;">Select a tier to see stats.</p>
+        </div>
+
+        <div id="result-area">
+          <p class="result-placeholder">Adjust settings to calculate.</p>
+        </div>
+
+        <!-- Event points breakdown -->
+        <div id="events-section" class="hidden" style="margin-top:20px;">
+          <h3 style="font-size:15px;font-weight:600;margin-bottom:12px;color:var(--text);">
+            Event Points This Batch
+          </h3>
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-label">🏆 HoG Points</div>
+              <div class="result-value" id="hog-pts">—</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">⚔️ KvK Points</div>
+              <div class="result-value" id="kvk-pts">—</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">🎯 TSG Points</div>
+              <div class="result-value" id="tsg-pts">—</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">🔥 Pts/Hour</div>
+              <div class="result-value" id="pts-per-hr">—</div>
+            </div>
+          </div>
+          <p style="font-size:12px;color:var(--text-dim);margin-top:10px;">
+            Pts/Hour = HoG points ÷ training hours. Useful for comparing tier efficiency.
+          </p>
+        </div>
+
+      </div>
+    </div><!-- /calc-layout -->
+
+    <!-- Event point rate guide -->
+    <div class="card mt-24">
+      <div class="card-title">How to read event point rates</div>
+      <p style="font-size:13px;color:var(--text-muted);line-height:1.7;">
+        Each training event (HoG, KvK, TSG) awards points per troop trained at a rate that scales with troop tier.
+        T4 troops typically earn more points per troop than T3, but T3 trains faster — the pts/hour comparison
+        tells you which is more efficient for a given event target.<br><br>
+        To find your current event rates: open the event in-game → tap the reward info tab → look for
+        "Training points per troop" or similar. Enter those values above for exact results.
+      </p>
+    </div>
+
+  </div><!-- /container -->
+</div><!-- /page -->
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">KingshotPro</div>
+      <p class="footer-note">Unofficial. Not affiliated with Century Games.</p>
+    </div>
+    <div class="footer-links">
+      <a href="building.html">Building Calculator</a>
+      <a href="gear.html">Gear Calculator</a>
+      <a href="shards.html">Hero Shards</a>
+      <a href="../codes.html">Gift Codes</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/fid.js"></script>
+<script src="../js/calc-troops.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Upgrade Calculator — KingshotPro</title>
+  <meta name="description" content="Calculate pet upgrade feed and material costs for Kingshot.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-brand" href="../index.html">KingshotPro</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="building.html" class="active">Calculators</a></li>
+    <li><a href="../codes.html">Gift Codes</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+  <div class="container">
+
+    <div class="page-header">
+      <a class="back-link" href="../index.html">← Home</a>
+      <h1>🐉 Pet Upgrade Calculator</h1>
+      <p>Feed and material costs to level up your pets.</p>
+    </div>
+
+    <div class="calc-layout">
+
+      <!-- INPUTS -->
+      <div class="calc-inputs">
+        <h2>Pet Setup</h2>
+
+        <div class="form-group">
+          <label for="pet-rarity">Pet rarity</label>
+          <select id="pet-rarity" onchange="calculate()">
+            <option value="common">Common</option>
+            <option value="rare">Rare</option>
+            <option value="epic" selected>Epic</option>
+            <option value="legendary">Legendary</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="pet-from">Current level</label>
+          <select id="pet-from" onchange="calculate()"></select>
+        </div>
+
+        <div class="form-group">
+          <label for="pet-to">Target level</label>
+          <select id="pet-to" onchange="calculate()"></select>
+        </div>
+
+        <button class="btn btn-primary btn-full" onclick="calculate()">Calculate</button>
+
+        <div class="alert alert-warn mt-16" style="font-size:12px;">
+          [EST] Pet costs are community-estimated. Verify at
+          <a href="https://kingshotdata.com" target="_blank" rel="noopener">kingshotdata.com</a>.
+        </div>
+      </div>
+
+      <!-- RESULTS -->
+      <div class="calc-results">
+        <h2>Upgrade Costs</h2>
+
+        <div id="result-area">
+          <p class="result-placeholder">Select pet and levels to calculate.</p>
+        </div>
+
+        <div id="cost-table-wrap" class="hidden mt-16">
+          <h3 style="font-size:14px;font-weight:600;margin-bottom:10px;color:var(--text);">Level breakdown</h3>
+          <div style="overflow-x:auto;">
+            <table class="data-table" id="cost-table">
+              <thead>
+                <tr>
+                  <th>Level</th>
+                  <th>Pet Feed</th>
+                  <th>Special Mat</th>
+                </tr>
+              </thead>
+              <tbody id="cost-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /calc-layout -->
+
+    <!-- Pet priority note -->
+    <div class="card mt-24">
+      <div class="card-title">Pet upgrade priority</div>
+      <p style="font-size:13px;color:var(--text-muted);line-height:1.7;">
+        Pet bonuses scale significantly with level, but cost also scales steeply.
+        Focus on your primary combat pet first. Leveling one pet to 30 typically
+        outperforms leveling three pets to 15. Verify specific pet bonuses at
+        <a href="https://kingshotdata.com" target="_blank" rel="noopener">kingshotdata.com</a>.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">KingshotPro</div>
+      <p class="footer-note">Unofficial. Not affiliated with Century Games.</p>
+    </div>
+    <div class="footer-links">
+      <a href="building.html">Building</a>
+      <a href="troops.html">Troops</a>
+      <a href="gear.html">Gear</a>
+      <a href="shards.html">Hero Shards</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/fid.js"></script>
+<script src="../js/calc-pets.js"></script>
+</body>
+</html>
