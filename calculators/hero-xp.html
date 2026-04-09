@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hero XP — KingshotPro</title>
-  <meta name="description" content="Experience points needed per hero level.">
+  <title>Hero XP Calculator — KingshotPro</title>
+  <meta name="description" content="Calculate Hero XP requirements per level in Kingshot. Plan hero progression efficiently.">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -12,22 +12,31 @@
 <div class="page"><div class="container">
   <div class="page-header">
     <a class="back-link" href="../index.html">&larr; Home</a>
-    <h1>📊 Hero XP</h1>
-    <p>Experience points needed per hero level.</p>
+    <h1>&#128202; Hero XP Calculator</h1>
+    <p>XP requirements and deployment capacity per hero level.</p>
   </div>
   <div class="calc-layout">
     <div class="calc-inputs">
       <h2>Parameters</h2>
-      <div class="alert alert-info" style="font-size:13px;">
-        This calculator is being built. Game data is being collected and verified from community sources.
-        <br><br>
-        <strong>Help us build faster:</strong> Submit verified in-game data at
-        <a href="https://github.com/Kingshotpro/website/issues" target="_blank" rel="noopener">GitHub Issues</a>.
+      <div class="form-group">
+        <label for="hx-from">Current hero level</label>
+        <select id="hx-from"></select>
       </div>
+      <div class="form-group">
+        <label for="hx-to">Target hero level</label>
+        <select id="hx-to"></select>
+      </div>
+      <div class="alert alert-info" style="font-size:12px;margin-bottom:16px;">
+        Hero XP is gained from XP items, expedition, and events.<br>
+        Data covers levels 1-15. Max level is 80 — more data coming.
+      </div>
+      <button class="btn btn-primary btn-full" id="hx-calc-btn">Calculate</button>
     </div>
     <div class="calc-results">
-      <h2>Results</h2>
-      <p class="result-placeholder">Launching soon with verified game data.</p>
+      <h2>XP Progression</h2>
+      <div id="hx-results">
+        <p class="result-placeholder">Select levels and click Calculate.</p>
+      </div>
     </div>
   </div>
   <div class="ad-slot" data-slot="calc-result-below"></div>
@@ -39,5 +48,6 @@
 <script src="../js/layout.js"></script>
 <script src="../js/fid.js"></script>
 <script src="../js/advisory.js"></script>
+<script src="../js/calc-hero-xp.js"></script>
 <script src="../js/steward.js"></script>
 </body></html>
