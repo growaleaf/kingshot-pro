@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Truegold — KingshotPro</title>
-  <meta name="description" content="Truegold crafting and tempering cost calculator.">
+  <title>Truegold Calculator — KingshotPro</title>
+  <meta name="description" content="Calculate Truegold and Tempered Truegold requirements per building tier in Kingshot.">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -12,22 +12,50 @@
 <div class="page"><div class="container">
   <div class="page-header">
     <a class="back-link" href="../index.html">&larr; Home</a>
-    <h1>💎 Truegold</h1>
-    <p>Truegold crafting and tempering cost calculator.</p>
+    <h1>&#128142; Truegold Calculator</h1>
+    <p>Truegold and Tempered Truegold requirements per building and tier.</p>
   </div>
   <div class="calc-layout">
     <div class="calc-inputs">
       <h2>Parameters</h2>
-      <div class="alert alert-info" style="font-size:13px;">
-        This calculator is being built. Game data is being collected and verified from community sources.
-        <br><br>
-        <strong>Help us build faster:</strong> Submit verified in-game data at
-        <a href="https://github.com/Kingshotpro/website/issues" target="_blank" rel="noopener">GitHub Issues</a>.
+      <div class="form-group">
+        <label for="tg-from">Current TG tier (completed)</label>
+        <select id="tg-from">
+          <option value="0">None (no TG started)</option>
+          <option value="1">TG1</option>
+          <option value="2">TG2</option>
+          <option value="3">TG3</option>
+          <option value="4">TG4</option>
+          <option value="5">TG5</option>
+          <option value="6">TG6</option>
+          <option value="7">TG7</option>
+        </select>
       </div>
+      <div class="form-group">
+        <label for="tg-to">Target TG tier</label>
+        <select id="tg-to">
+          <option value="1">TG1</option>
+          <option value="2">TG2</option>
+          <option value="3">TG3</option>
+          <option value="4">TG4</option>
+          <option value="5" selected>TG5</option>
+          <option value="6">TG6</option>
+          <option value="7">TG7</option>
+          <option value="8">TG8</option>
+        </select>
+      </div>
+      <div class="alert alert-info" style="font-size:12px;margin-bottom:16px;">
+        TG1-TG5 require Truegold only.<br>
+        TG6-TG8 also require Tempered Truegold (TTG).<br>
+        Each tier covers all 5 stages of every building.
+      </div>
+      <button class="btn btn-primary btn-full" id="tg-calc-btn">Calculate</button>
     </div>
     <div class="calc-results">
-      <h2>Results</h2>
-      <p class="result-placeholder">Launching soon with verified game data.</p>
+      <h2>Truegold Requirements</h2>
+      <div id="tg-results">
+        <p class="result-placeholder">Select tiers and click Calculate.</p>
+      </div>
     </div>
   </div>
   <div class="ad-slot" data-slot="calc-result-below"></div>
@@ -39,5 +67,6 @@
 <script src="../js/layout.js"></script>
 <script src="../js/fid.js"></script>
 <script src="../js/advisory.js"></script>
+<script src="../js/calc-truegold.js"></script>
 <script src="../js/steward.js"></script>
 </body></html>
