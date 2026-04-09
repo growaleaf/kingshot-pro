@@ -1,14 +1,15 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mystic Trials — KingshotPro</title><link rel="stylesheet" href="../css/style.css"></head><body>
+<title>Mystic Trials Planner — KingshotPro</title><meta name="description" content="Plan Mystic Trial runs with dungeon rotations, troop formations, and weekly crystal rewards for Kingshot."><link rel="stylesheet" href="../css/style.css"></head><body>
 <nav class="nav"><a class="nav-brand" href="../index.html">KingshotPro</a></nav>
 <div class="page"><div class="container">
-<div class="page-header"><a class="back-link" href="../index.html">&larr; Home</a><h1>&#128302; Mystic Trials Planner</h1><p>Plan your trial runs and energy usage.</p></div>
-<div class="calc-layout"><div class="calc-inputs"><h2>Parameters</h2>
-<div class="form-group"><label for="my-trials">Planned trial runs</label><input type="number" id="my-trials" placeholder="e.g. 10" min="0"></div>
-<div class="form-group"><label for="my-energy">Current energy</label><input type="number" id="my-energy" placeholder="e.g. 200" min="0"></div>
-<div class="form-group"><label for="my-cost">Energy per trial</label><input type="number" id="my-cost" value="10" min="1"></div>
+<div class="page-header"><a class="back-link" href="../index.html">&larr; Home</a><h1>&#128302; Mystic Trials Planner</h1><p>Dungeon rotations, troop formations, and weekly Misty Crystal rewards.</p></div>
+<div class="calc-layout">
+<div class="calc-inputs"><h2>Your Progress</h2>
+<div class="form-group"><label for="my-stages">Total stages cleared (all dungeons)</label><input type="number" id="my-stages" placeholder="e.g. 30" min="0"></div>
+<div class="form-group"><label for="my-attempts">Attempts remaining today</label><input type="number" id="my-attempts" value="5" min="0" max="5"></div>
+<div class="alert alert-info" style="font-size:12px;margin-bottom:16px;">Unlocks at Town Center 19. 5 free attempts/day.<br>Victories don't consume attempts — only losses do.</div>
 <button class="btn btn-primary btn-full" id="my-calc-btn">Calculate</button></div>
-<div class="calc-results"><h2>Trial Plan</h2><div id="my-results"><p class="result-placeholder">Enter energy info and click Calculate.</p></div></div></div>
+<div class="calc-results"><h2>Weekly Rewards & Guide</h2><div id="my-results"><p class="result-placeholder">Enter your progress and click Calculate.</p></div></div></div>
 <div class="ad-slot" data-slot="calc-result-below"></div>
 </div></div>
 <footer class="footer"><div class="footer-inner"><div><div class="footer-brand">KingshotPro</div><p class="footer-note">Unofficial. Not affiliated with Century Games.</p></div></div></footer>

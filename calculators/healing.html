@@ -1,17 +1,20 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Healing Cost Calculator — KingshotPro</title><link rel="stylesheet" href="../css/style.css"></head><body>
+<title>Healing Cost Calculator — KingshotPro</title><meta name="description" content="Calculate troop healing costs per tier T1-T11 in Kingshot. Food, wood, stone, iron per wounded troop."><link rel="stylesheet" href="../css/style.css"></head><body>
 <nav class="nav"><a class="nav-brand" href="../index.html">KingshotPro</a></nav>
 <div class="page"><div class="container">
-<div class="page-header"><a class="back-link" href="../index.html">&larr; Home</a><h1>&#128138; Healing Cost Calculator</h1><p>Calculate total healing costs from your in-game rates.</p></div>
-<div class="calc-layout"><div class="calc-inputs"><h2>Parameters</h2>
-<div class="form-group"><label for="heal-troops">Wounded troops to heal</label><input type="number" id="heal-troops" placeholder="e.g. 50000" min="0"></div>
-<div class="form-group"><label for="heal-food">Food cost per troop</label><input type="number" id="heal-food" placeholder="From infirmary" min="0" step="0.1"></div>
-<div class="form-group"><label for="heal-wood">Wood cost per troop</label><input type="number" id="heal-wood" placeholder="0" min="0" step="0.1"></div>
-<div class="form-group"><label for="heal-stone">Stone cost per troop</label><input type="number" id="heal-stone" placeholder="0" min="0" step="0.1"></div>
-<div class="form-group"><label for="heal-iron">Iron cost per troop</label><input type="number" id="heal-iron" placeholder="0" min="0" step="0.1"></div>
-<div class="alert alert-info" style="font-size:12px;margin-bottom:16px;">Check your in-game infirmary for per-troop costs. Costs vary by troop tier.</div>
+<div class="page-header"><a class="back-link" href="../index.html">&larr; Home</a><h1>&#128138; Healing Cost Calculator</h1><p>Resource costs to heal wounded troops by tier.</p></div>
+<div class="calc-layout">
+<div class="calc-inputs"><h2>Parameters</h2>
+<div class="form-group"><label for="heal-tier">Troop tier</label>
+<select id="heal-tier">
+<option value="1">T1</option><option value="2">T2</option><option value="3">T3</option>
+<option value="4">T4</option><option value="5">T5</option><option value="6">T6</option>
+<option value="7">T7</option><option value="8">T8</option><option value="9">T9</option>
+<option value="10" selected>T10</option><option value="11">T11</option>
+</select></div>
+<div class="form-group"><label for="heal-troops">Wounded troops to heal</label><input type="number" id="heal-troops" placeholder="e.g. 50000" min="1"></div>
 <button class="btn btn-primary btn-full" id="heal-calc-btn">Calculate</button></div>
-<div class="calc-results"><h2>Total Healing Cost</h2><div id="heal-results"><p class="result-placeholder">Enter costs and click Calculate.</p></div></div></div>
+<div class="calc-results"><h2>Healing Cost</h2><div id="heal-results"><p class="result-placeholder">Select tier, enter troops, and click Calculate.</p></div></div></div>
 <div class="ad-slot" data-slot="calc-result-below"></div>
 </div></div>
 <footer class="footer"><div class="footer-inner"><div><div class="footer-brand">KingshotPro</div><p class="footer-note">Unofficial. Not affiliated with Century Games.</p></div></div></footer>
