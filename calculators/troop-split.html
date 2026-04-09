@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Troop Split Calculator — KingshotPro</title>
+  <meta name="description" content="Optimally split troops across marches for Bear Hunt, Viking Vengeance, and other Kingshot events.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<nav class="nav"><a class="nav-brand" href="../index.html">KingshotPro</a></nav>
+<div class="page"><div class="container">
+  <div class="page-header">
+    <a class="back-link" href="../index.html">&larr; Home</a>
+    <h1>🐻 Troop Split Calculator</h1>
+    <p>Optimally split troops across marches for Bear Hunt, Vikings, and more.</p>
+  </div>
+  <div class="calc-layout">
+    <div class="calc-inputs">
+      <h2>Parameters</h2>
+      <div class="form-group">
+        <label for="ts-total">Total troops to deploy</label>
+        <input type="number" id="ts-total" placeholder="e.g. 500000" min="1">
+      </div>
+      <div class="form-group">
+        <label for="ts-marches">Number of marches</label>
+        <input type="number" id="ts-marches" value="5" min="1" max="10">
+      </div>
+      <div class="form-group">
+        <label for="ts-mode">Split strategy</label>
+        <select id="ts-mode">
+          <option value="even">Even split</option>
+          <option value="main-heavy">Main march heavy (40/60)</option>
+          <option value="decoy">Decoy marches (1 troop each)</option>
+        </select>
+      </div>
+      <button class="btn btn-primary btn-full" id="ts-calc-btn">Calculate</button>
+    </div>
+    <div class="calc-results">
+      <h2>March Distribution</h2>
+      <div id="ts-results">
+        <p class="result-placeholder">Enter troops and click Calculate.</p>
+      </div>
+    </div>
+  </div>
+  <div class="ad-slot" data-slot="calc-result-below"></div>
+</div></div>
+<footer class="footer"><div class="footer-inner">
+  <div><div class="footer-brand">KingshotPro</div>
+  <p class="footer-note">Unofficial. Not affiliated with Century Games.</p></div>
+</div></footer>
+<script src="../js/layout.js"></script>
+<script src="../js/fid.js"></script>
+<script src="../js/advisory.js"></script>
+<script src="../js/calc-troop-split.js"></script>
+<script src="../js/steward.js"></script>
+</body></html>
