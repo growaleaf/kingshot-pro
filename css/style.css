@@ -1039,6 +1039,7 @@ input[type="range"] {
   margin: 24px 0;
 }
 .ad-slot::after { content: 'Ad'; }
+.sb-ad { margin: 16px 12px; min-height: 250px; }
 
 /* ============================================
    RESPONSIVE — sidebar breakpoints

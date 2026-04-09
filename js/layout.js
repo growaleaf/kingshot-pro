@@ -93,7 +93,10 @@
     h += '<span class="sb-icon">\u{1F4D6}</span><span class="sb-text">Game Wiki</span><span class="sb-arrow">\u2197</span></a>';
     h += '<a href="https://kingshotguides.com" target="_blank" rel="noopener" class="sb-item ext">';
     h += '<span class="sb-icon">\u{1F4DD}</span><span class="sb-text">Guides</span><span class="sb-arrow">\u2197</span></a>';
-    h += '</div></nav>';
+    h += '</div>';
+    // Ad slot: sidebar bottom
+    h += '<div class="ad-slot sb-ad" data-slot="sidebar-bottom"></div>';
+    h += '</nav>';
     return h;
   }
 
