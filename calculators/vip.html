@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIP Calculator — KingshotPro</title>
+  <meta name="description" content="Calculate VIP upgrade XP and gem costs for Kingshot. Plan your VIP progression efficiently.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-brand" href="../index.html">KingshotPro</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="building.html" class="active">Calculators</a></li>
+    <li><a href="../codes.html">Gift Codes</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+  <div class="container">
+
+    <div class="page-header">
+      <a class="back-link" href="../index.html">&larr; Home</a>
+      <h1>&#11088; VIP Calculator</h1>
+      <p>Calculate XP and gem costs to reach your target VIP level.</p>
+    </div>
+
+    <div class="calc-layout">
+
+      <div class="calc-inputs">
+        <h2>Parameters</h2>
+
+        <div class="form-group">
+          <label for="vip-from">Current VIP level</label>
+          <select id="vip-from"></select>
+        </div>
+
+        <div class="form-group">
+          <label for="vip-to">Target VIP level</label>
+          <select id="vip-to"></select>
+        </div>
+
+        <div class="alert alert-info" style="font-size:12px;margin-bottom:16px;">
+          1 VIP point = 1 XP. 1 VIP point costs 2 gems.<br>
+          VIP points are also earned from daily rewards, events, and packs.
+        </div>
+
+        <button class="btn btn-primary btn-full" id="vip-calc-btn">Calculate</button>
+      </div>
+
+      <div class="calc-results">
+        <h2>VIP Progression</h2>
+        <div id="vip-results">
+          <p class="result-placeholder">Select levels and click Calculate.</p>
+        </div>
+
+        <div id="data-notice" class="alert alert-warn mt-16" style="font-size:13px;">
+          &#9888;&#65039; VIP data sourced from kingshot.net. Verify exact values in-game.
+          <br><br>
+          <a href="https://github.com/Kingshotpro/website/issues" target="_blank" rel="noopener">Report inaccuracies &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Ad slot: below calculator results -->
+    <div class="ad-slot" data-slot="calc-result-below"></div>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">KingshotPro</div>
+      <p class="footer-note">Unofficial. Not affiliated with Century Games.</p>
+    </div>
+    <div class="footer-links">
+      <a href="building.html">Building Calculator</a>
+      <a href="troops.html">Troop Calculator</a>
+      <a href="gear.html">Gear Calculator</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/layout.js"></script>
+<script src="../js/fid.js"></script>
+<script src="../js/advisory.js"></script>
+<script src="../js/calc-vip.js"></script>
+<script src="../js/steward.js"></script>
+</body>
+</html>

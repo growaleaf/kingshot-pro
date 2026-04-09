@@ -34,7 +34,7 @@
     { icon: '\u{1F4C8}', label: 'Hero Comparison',  href: null },
     { icon: '\u{1F3C6}', label: 'KvK Score',        href: null },
     { icon: '\u{1F52C}', label: 'War Academy',      href: null },
-    { icon: '\u2B50',   label: 'VIP',               href: null },
+    { icon: '\u2B50',   label: 'VIP',               href: B + 'calculators/vip.html',      key: 'vip' },
     { icon: '\u{1F48E}', label: 'Truegold',         href: null },
     { cat: 'PLANNERS' },
     { icon: '\u{1F91D}', label: 'Alliance Mob.',    href: null,                            badges: ['New'] },
